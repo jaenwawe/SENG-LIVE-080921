@@ -127,6 +127,15 @@ console.log(copyOfPikachu)
 console.log(pikachu)
 ```
 
+Can use Object.assign() as well
+
+```
+const copyOfPikachu = Object.assign({}, pikachu) 
+delete copyOfPikachu.abilities
+console.log(copyOfPikachu)
+console.log(pikachu)
+```
+
 ### Segment 2: looping through objects
 
 #### Iterating through an object using for...in 
