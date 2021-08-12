@@ -53,11 +53,19 @@ document.getElementById()
 
 ```
 document.getElementsByClassName()`
+```
     - accepts class as an argument
     - returns an HTMLcollection
+
+#### querySelector
+
 ```
-querySelector
-querySelectorAll
+document.querySelector()
+```
+    - returns the first value that matches the provided selector.
+    - This selector accepts tag names, class names and id’s
+
+#### querySelectorAll
 
 
 ### Segment 2: creating, updating and deleting DOM elements
