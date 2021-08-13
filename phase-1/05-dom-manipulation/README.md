@@ -77,7 +77,7 @@ document.querySelector()
     - returns the first value that matches the provided selector.
 
 ```
-const p = document.querySelector("p")
+const goalsDiv = document.querySelector("#lecture-goals")
 ```
 
 #### querySelectorAll
@@ -93,6 +93,10 @@ document.querySelectorAll()
 const listItems = document.querySelectorAll("li")
 ```
 
+```
+Break
+```
+
 ### Segment 2: creating, updating and deleting DOM elements
 
 #### Create an element using .createElement
@@ -101,7 +105,7 @@ Create a div with an id of 'poke-1' and class of "poke-card"
 
 ```
 const pokeCard = document.createElement("div");
-pokeCard.id = `poke-${pokemon.id}`;
+pokeCard.id = `poke-1`;
 pokeCard.className = "poke-card";
 ```
 
@@ -109,40 +113,67 @@ Have students walk through how to create an img tag and walk through src attribu
 
 ```
   const pokeImg = document.createElement("img");
-  pokeImg.src = pokemon.img;
-  pokeImg.alt = `${pokemon.name} image`;
+  pokeImg.src = 'img';
+  pokeImg.alt = `pokemon image`;
 ```
+
 #### Append element to page using .appendChild()
 
 Demonstrate appending pokeImg to pokeCard
 
 ```
-pokeCard.appendChild(img)
+pokeCard.appendChild(pokeImg)
 ```
 
 Have students walk you through selecting the "poke-container" and appending the pokeCard to the div 
 
 ```
-const pokeContainer = document.querySelector("poke-container")
+const pokeContainer = document.querySelector("#poke-container")
 pokeContainer.appendChild(pokeCard)
 ```
 
 ```
-Break time and then exercise
+Exercise
 ```
 
 #### Feel free to show other methods like .insertAdjacentHTML()
 
 #### Make changes to an element using .innerHTML and .innerText
 
+Select the h1 tag and change text using .innerText
+
+```
+const h1 = document.querySelector('div#lecture-goals h1')
+h1.innerText = "Making things appear on the web"
+```
+
+Add a new element to the paragraph using .innerHTML. This is a great time to discuss difference between `=` and `+=`
+
+```
+goalsDiv.innerHTML += `<button>Click Me!</button>`
+```
+
 Ask students how to select the div with id header and replace with the following 
 
 ```
-<img id="header-img"
+const header = document.getElementById('header')
+header.innerHTML = `<img id="header-img"
           src="https://external-preview.redd.it/tQged7mKJ3cUpNMq5IMeceZvyKP3cTyHqhNmKEQ0Vv8.png?auto=webp&s=fb5fd61cae0bc9cde2bc2a006b1e2aeb0c935ce9"
-        />
+/>`
 ```
 
 #### Explain the dangers of using .innerHTML
 
 #### Remove a node using .remove()
+
+Select h1 tag and remove
+
+```
+document.querySelector('button').remove()
+```
+
+Ask students to help walk you through removing the entire paragraph
+
+```
+goalsDiv.remove()
+```
