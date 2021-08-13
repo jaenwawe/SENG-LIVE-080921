@@ -28,13 +28,14 @@ Discuss how to load any JS file into html to be able to utilize JS code
 DOM stands for Document Object Model that gets created when HTML is being loaded from a server. The browser will take the HTML and convert it to the DOM
 
 It becomes a programming interface of your HTML or XML that is created by the browser
-Offers a web page as a tree of objects. We can then use JavaScript with the DOM to build interactive websites. 
+Offers a web page as a tree of objects. We can then use JavaScript with the DOM to build interactive websites.
 
-#### Visit a webpage and review the DOM tree 
+#### Visit a webpage and review the DOM tree
 
 Pull up google and change some text on the page to show that the DOM controls what we see on the page.
 
 #### Parent/Child node relationship
+
 - The DOM is a tree of nodes and each node has its own properties and methods
 - What is a node? Anything we can change in the document: element, Text, HTML attributes
 - These nodes also have relationships to one another
@@ -43,9 +44,11 @@ Pull up google and change some text on the page to show that the DOM controls wh
 #### Accessing DOM elements
 
 ##### byId
+
 ```
 document.getElementById()
 ```
+
     - accepts id as an argument
     - returns first match
 
@@ -60,6 +63,7 @@ const pokeForm = document.getElementById("poke-form")
 ```
 document.getElementsByClassName()`
 ```
+
     - accepts class as an argument
     - returns an HTMLcollection
     - Looks like an array, is not
@@ -73,6 +77,7 @@ const label = document.getElementsByClassName("form-label")
 ```
 document.querySelector()
 ```
+
     - This selector accepts tag names, class names and id’s
     - returns the first value that matches the provided selector.
 
@@ -85,7 +90,8 @@ const goalsDiv = document.querySelector("#lecture-goals")
 ```
 document.querySelectorAll()
 ```
-    - Dynamic: accepts class, id’s and 
+
+    - Dynamic: accepts class, id’s and
     - Returns a node list that matches the provided selector
     - Only array method available to nodelist is forEach
 
@@ -101,20 +107,38 @@ Break
 
 #### Create an element using .createElement
 
-Create a div with an id of 'poke-1' and class of "poke-card"
+First point out array of pokemons and ask students what the best way to perform an action on each element of this array would be
 
 ```
-const pokeCard = document.createElement("div");
-pokeCard.id = `poke-1`;
-pokeCard.className = "poke-card";
+pokemons.forEach(pokemon => renderPokemon(pokemon))
+
+function renderPokemon(poke){
+
+}
 ```
 
-Have students walk through how to create an img tag and walk through src attribute 
+Create a div with a dynamic id that returns 'poke-${poke.id}' and class of "poke-card"
 
 ```
+function renderPokemon(poke) {
+  const pokeCard = document.createElement("div");
+  pokeCard.id = `poke-${poke.id}`;
+  pokeCard.className = "poke-card";
+}
+```
+
+Have students walk through how to create an img tag and walk through src attribute
+
+```
+function renderPokemon(poke) {
+  const pokeCard = document.createElement("div");
+  pokeCard.id = `poke-${poke.id}`;
+  pokeCard.className = "poke-card";
+
   const pokeImg = document.createElement("img");
-  pokeImg.src = 'img';
-  pokeImg.alt = `pokemon image`;
+  pokeImg.src = poke.img;
+  pokeImg.alt = `${poke.name} image`;
+}
 ```
 
 #### Append element to page using .appendChild()
@@ -125,7 +149,7 @@ Demonstrate appending pokeImg to pokeCard
 pokeCard.appendChild(pokeImg)
 ```
 
-Have students walk you through selecting the "poke-container" and appending the pokeCard to the div 
+Have students walk you through selecting the "poke-container" and appending the pokeCard to the div
 
 ```
 const pokeContainer = document.querySelector("#poke-container")
@@ -153,7 +177,7 @@ Add a new element to the paragraph using .innerHTML. This is a great time to dis
 goalsDiv.innerHTML += `<button>Click Me!</button>`
 ```
 
-Ask students how to select the div with id header and replace with the following 
+Ask students how to select the div with id header and replace with the following
 
 ```
 const header = document.getElementById('header')
