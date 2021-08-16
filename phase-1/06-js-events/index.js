@@ -74,8 +74,23 @@ function increaseLikes(pokemon, likesElement){
     likesElement.textContent = pokemon.likes
 }
 
+function createPokemon(){
+  event.preventDefault()
+  let nameInput = pokeForm.querySelector("#name-input").value
+  let imgInput = pokeForm.querySelector("#img-input").value
+
+  let pokemon = {
+    name: nameInput,
+    img: imgInput,
+    likes: 0
+  }
+
+  renderPokemon(pokemon)
+}
+
 function init() {
   pokemons.forEach(renderPokemon);
+  pokeForm.addEventListener('submit', createPokemon)
 }
 
 init()

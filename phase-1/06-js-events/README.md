@@ -130,7 +130,40 @@ To refactor this, make sure pokemon and likesNum are passed to the event handler
 Break Time
 ```
 
-Segment 2:
-Use a form to create and add elements to the page
+### Segment 2:
+
+#### Use a form to create and add elements to the page
+
+Need to attach event listener to form. Ask students where the best place for this logic would be?
+
+```
+function init() {
+  pokemons.forEach(renderPokemon);
+  pokeForm.addEventListener('submit', createPokemon)
+}
+```
+
+Submit form and ask students why they think the page refreshed?
+
+We need to stop the default event behavior from happening. Event gets implicitly passed to the event handler. 
+
+```
+function createPokemon(){
+  event.preventDefault()
+  let nameInput = pokeForm.querySelector("#name-input").value
+  let imgInput = pokeForm.querySelector("#img-input").value
+
+  let pokemon = {
+    name: nameInput,
+    img: imgInput,
+    likes: 0
+  }
+
+  renderPokemon(pokemon)
+}
+```
+
+Ask students to complete delete button click as a group in breakout rooms.
+
 Segment 3:
 Use a form to search for elements on a page
