@@ -46,7 +46,11 @@ Identify the events that will be used in today's deliverables: click and submit
 Discuss 3 components of events:
 
 ```txt
-1. Event listener: gets attached to the node meant to make something happen. We can add event listeners in 2 ways. Inline and with .addEventListener(). Inline limits how many events we can attach to a single node. .addEventListener's first argument is going to be the event type and the second argument is going to be a callback function referred to as event handler. 
+1. Event listener: gets attached to the node meant to make something happen. 
+We can add event listeners in 2 ways. 
+Inline and with .addEventListener(). 
+Inline limits how many events we can attach to a single node. 
+.addEventListener's first argument is going to be the event type and the second argument is going to be a callback function referred to as event handler. 
 2. Event type: The event type tells the node what behavior the event listener should react on, and when it is heard, it will invoke the event handler.
 3. Event handler: A callback function that will handle the event. 
 ```
