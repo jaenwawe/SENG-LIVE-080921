@@ -56,6 +56,8 @@ function renderPokemon(pokemon) {
   const likeBttn = document.createElement("button");
   likeBttn.className = "like-bttn";
   likeBttn.textContent = "♥";
+  
+  likeBttn.addEventListener('click', () => increaseLikes(pokemon, likesNum))
 
   const deleteBttn = document.createElement("button");
   deleteBttn.className = "delete-bttn";
@@ -65,8 +67,15 @@ function renderPokemon(pokemon) {
   pokeContainer.appendChild(pokeCard);
 }
 
+function increaseLikes(pokemon, likesElement){
+    // Increase likes by 1
+    ++pokemon.likes
+    // Change the text to reflect update
+    likesElement.textContent = pokemon.likes
+}
+
 function init() {
   pokemons.forEach(renderPokemon);
 }
 
-init();
+init()
