@@ -56,41 +56,57 @@ function renderPokemon(pokemon) {
   const likeBttn = document.createElement("button");
   likeBttn.className = "like-bttn";
   likeBttn.textContent = "♥";
-  
-  likeBttn.addEventListener('click', () => increaseLikes(pokemon, likesNum))
+  likeBttn.addEventListener("click", () => increaseLike(pokemon, likesNum));
 
   const deleteBttn = document.createElement("button");
   deleteBttn.className = "delete-bttn";
   deleteBttn.textContent = "Delete";
+  deleteBttn.addEventListener("click", () => deletePoke(pokeCard));
 
   pokeCard.append(pokeImg, pokeName, pokeLikes, likesNum, likeBttn, deleteBttn);
   pokeContainer.appendChild(pokeCard);
 }
 
-function increaseLikes(pokemon, likesElement){
-    // Increase likes by 1
-    ++pokemon.likes
-    // Change the text to reflect update
-    likesElement.textContent = pokemon.likes
+function deletePoke(pokeCard) {
+  pokeCard.remove();
 }
 
-function createPokemon(){
-  event.preventDefault()
-  let nameInput = pokeForm.querySelector("#name-input").value
-  let imgInput = pokeForm.querySelector("#img-input").value
+function deletePoke(event) {
+  event.target.parentNode.remove();
+}
 
+function increaseLike(pokemon, likesElement) {
+  // 1. increase the num of likes by 1 per click
+  ++pokemon.likes;
+  // pokemon.likes += 1
+  // 2. update the DOM to reflect that new number
+  likesElement.textContent = pokemon.likes;
+}
+
+function createPokemon(event) {
+  // prevent default behavior of a form
+  event.preventDefault();
+
+  // gather input values
+  let pokeName = pokeForm.querySelector("#name-input").value;
+  let pokeImg = pokeForm.querySelector("#img-input").value;
+
+  // create new pokemon object
   let pokemon = {
-    name: nameInput,
-    img: imgInput,
-    likes: 0
-  }
+    id: 7,
+    name: pokeName,
+    img: pokeImg,
+    likes: 0,
+  };
 
-  renderPokemon(pokemon)
+  // create a new card for new pokemon
+  renderPokemon(pokemon);
+  pokeForm.reset();
 }
 
 function init() {
   pokemons.forEach(renderPokemon);
-  pokeForm.addEventListener('submit', createPokemon)
+  pokeForm.addEventListener("submit", createPokemon);
 }
 
-init()
+init();
