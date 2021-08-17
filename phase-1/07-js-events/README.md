@@ -121,4 +121,3 @@ function getPokemons() {
                     .catch(err => console.log('err', err))
 
 
-                    test
