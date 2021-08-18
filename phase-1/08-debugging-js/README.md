@@ -1,11 +1,12 @@
 Common errors and how to debug
+
 #### Syntax errors:
 
 ```
 function getPokemon() {
   fetch("http://localhost:3000/pokemon")
     .then((resp) => resp.json()
-    .then((pokemons) => pokemons.characters.forEach(renderPokemon));  
+    .then((pokemons) => pokemons.characters.forEach(renderPokemon));
 }
 ```
 
@@ -21,9 +22,10 @@ console.log(pokeCard) // returns 'null'
 ```
 
 How to debug this issue?
+
 1. First, read the error and identify what it could mean
-2. Why is this returning 'null'? Identify if it is a scoping or selector issue 
-3. Considering scoping, test accessisibilty 
+2. Why is this returning 'null'? Identify if it is a scoping or selector issue
+3. Considering scoping, test accessisibilty
 
 Test selector in console
 
@@ -56,19 +58,19 @@ function withinScope(){
 
 #### '.... is not a function'
 
-* This is a common confusion amongst beginners
+- This is a common confusion amongst beginners
 
 ```
 function getPokemon() {
   fetch("http://localhost:3000/pokemon")
     .then((resp) => resp.json)
-    .then((pokemons) => pokemons.forEach(renderPokemon));  
+    .then((pokemons) => pokemons.forEach(renderPokemon));
 }
 ```
 
-1. Confirm that forEach() is an array method via MDN 
+1. Confirm that forEach() is an array method via MDN
 2. We assume pokemons is an array, but let's confirm it
-We can do so by console.log or debugger
+   We can do so by console.log or debugger
 
 Using debugger in arrow functions
 
@@ -78,7 +80,8 @@ Using debugger in arrow functions
 function getPokemon() {
   fetch("http://localhost:3000/pokemons")
     .then((resp) => resp.json)
-    .then((pokemons) => {debugger});  
+    .then((pokemons) => {debugger});
 }
 ```
 
+test
