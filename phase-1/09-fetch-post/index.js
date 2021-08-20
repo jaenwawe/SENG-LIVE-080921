@@ -36,30 +36,20 @@ function renderPokemon(pokemon) {
 
 function createPokemon(event) {
   event.preventDefault();
+
   let pokeName = pokeForm.querySelector("#name-input").value;
   let pokeImg = pokeForm.querySelector("#img-input").value;
+
   let pokemon = {
-    // id: 7, // needs to change
     name: pokeName,
     img: pokeImg,
     likes: 0,
   };
+
+  // optimistic rendering: rendering pokemon to dom before castPokemon(fetch request)
   renderPokemon(pokemon);
+  castPokemon(pokemon);
   pokeForm.reset();
-
-  const options = {
-    method: "POST",
-    headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(pokemon),
-  };
-
-  fetch("http://localhost:3000/pokemons", options)
-  .then(resp => resp.json())
-  .then(data => {debugger})
-
 }
 
 function increaseLike(pokemon, likesElement) {
@@ -72,14 +62,30 @@ function deletePoke(pokeCard) {
 }
 
 function init() {
-  getPokemon();
+  gottaCatchEmAll();
   pokeForm.addEventListener("submit", createPokemon);
 }
 
 init();
 
-function getPokemon() {
+function gottaCatchEmAll() {
   fetch("http://localhost:3000/pokemons")
     .then((resp) => resp.json())
-    .then((pokemons) => pokemons.forEach(renderPokemon));
+    .then((pokemon) => pokemon.forEach(renderPokemon));
+}
+
+function castPokemon(pokemon) {
+  const configObj = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(pokemon),
+  };
+
+  fetch("http://localhost:3000/pokemons", configObj);
+  // .then(resp => resp.json())
+  // .then(pokemon => renderPokemon(pokemon)
+  // ) pessimistic rendering
 }
